@@ -139,22 +139,18 @@ public class DriverReader extends LineOfTextFileReader {
 		int backIndex = 0; // Rear index or character position
 		int colonIndex = 0; // index of colon in delevery:duration substring
 
-		// Create a teacher object to record all of the info parsed from
-		// the line of text
+		// Create a driver object to record all of the info parsed from the line of text
 
 		Driver driver = new Driver();
 
 		while (!done) {
-
+			
 			backIndex = lineOfText.indexOf(' ', frontIndex);
-
+			
 			if (backIndex == -1) {
-
 				done = true;
 				token = lineOfText.substring(frontIndex);
-
 			} else {
-
 				token = lineOfText.substring(frontIndex, backIndex);
 			}
 
@@ -199,13 +195,8 @@ public class DriverReader extends LineOfTextFileReader {
 				} else {
 					// Error!
 				}
-
-			} // end switch
-
-		} // end while
-
+			}
+		} 
 		return (driver);
-
-	} // parseTeacherText
-
-} // DriverReader
+	}
+}

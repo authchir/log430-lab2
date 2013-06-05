@@ -76,13 +76,13 @@ public class DriverAssignment {
 			Displays display = new Displays();
 
 			/*
-			 * The following instantiations create a list of courses and
-			 * teachers. The pathname for the file containing course information
+			 * The following instantiations create a list of deliveries and
+			 * drivers. The pathname for the file containing course information
 			 * is passed to the main program on the command line as the first
 			 * argument (argv[0]). The pathname for the file containing teacher
 			 * information is passed to the main program on the command line as
-			 * the second argument (argv[1]). An example teacher file and course
-			 * file is provided as enseignantsLOG.txt and coursLOG.txt
+			 * the second argument (argv[1]). An example driver file and course
+			 * file is provided as drivers.txt and deliveries.txt
 			 */
 
 			DeliveryReader myCourseList = new DeliveryReader(argv[0]);

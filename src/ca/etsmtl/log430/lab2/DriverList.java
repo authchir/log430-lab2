@@ -1,10 +1,10 @@
 package ca.etsmtl.log430.lab2;
 
 /**
- * This class is used by various other classes that need to keep a list of
- * drivers on hand. It extends the List class which provides the basic
- * functionality for storage and retrieval of the Driver Object from the list.
- * 
+ * This class is used by various other classes that need to keep a list of drivers on hand. It extends the
+ * List class which provides the basic functionality for storage and retrieval of the Driver Object from the
+ * list.
+ *
  * @author A.J. Lattanze, CMU
  * @version 1.4, 2012-May-31
  */
@@ -23,13 +23,11 @@ package ca.etsmtl.log430.lab2;
  * v1.0, 12/29/99, A.J. Lattanze - Original version.
  * **************************************************************************
  */
-
 public class DriverList extends List {
 
 	/**
-	 * Adds a new teacher to the list. All the issues of casting are taken care
-	 * of within this class.
-	 * 
+	 * Adds a new driver to the list. All the issues of casting are taken care of within this class.
+	 *
 	 * @param driver
 	 */
 	public void addDriver(Driver driver) {
@@ -37,10 +35,9 @@ public class DriverList extends List {
 	}
 
 	/**
-	 * @return The driver at the current position pointed to by the
-	 *         internal list pointer. Subsequent calls will return the next
-	 *         teacher object in the list. A null object is returned if list is
-	 *         empty or the end of list has been reached.
+	 * @return The driver at the current position pointed to by the internal list pointer. Subsequent calls
+	 * will return the next driver object in the list. A null object is returned if list is empty or the end
+	 * of list has been reached.
 	 */
 	public Driver getNextDriver() {
 		return (Driver) getItemFromList();
@@ -48,7 +45,7 @@ public class DriverList extends List {
 
 	/**
 	 * Determines whether the Driver OBJ is currently in the student list.
-	 * 
+	 *
 	 * @param driver
 	 * @return true if the driver is in the list, false otherwise.
 	 */
@@ -64,80 +61,50 @@ public class DriverList extends List {
 		goToFrontOfList();
 
 		while (!done) {
-
 			currentObject = getNextDriver();
-
 			if (currentObject == null) {
-
 				done = true;
-
 			} else {
-
-				if (driver.getDriverID().compareTo(
-						currentObject.getDriverID()) == 0) {
-
+				if (driver.getDriverID().compareTo(currentObject.getDriverID()) == 0) {
 					result = true;
-
-				} // if
-
-			} // if
-
-		} // while
-
+				}
+			}
+		}
 		return (result);
-
-	} // findTeacher
+	}
 
 	/**
-	 * Finds a teacher in a list using the teacherID as the search key.
-	 * 
-	 * @param teacherID
-	 * @return if the current list object's teacherID matches the teacherID
-	 *         passed to the method, the Driver object is returned to the
-	 *         caller. Otherwise, returns null.
+	 * Finds a driver in a list using the driverID as the search key.
+	 *
+	 * @param driverID
+	 * @return if the current list object's driverID matches the driverID passed to the method, the Driver
+	 * object is returned to the caller. Otherwise, returns null.
 	 */
-	public Driver findTeacherByID(String teacherID) {
+	public Driver findDriverByID(String driverID) {
 
 		Driver currentObject = null;
 		boolean done = false;
 		boolean found = false;
 
-		// Note that this method assumes that all courses have different
+		// Note that this method assumes that all drivers have different
 		// identification numbers.
 
 		goToFrontOfList();
-
 		while (!done) {
-
 			currentObject = getNextDriver();
-
 			if (currentObject == null) {
-
 				done = true;
-
 			} else {
-
-				if (currentObject.getDriverID().compareTo(teacherID) == 0) {
-
+				if (currentObject.getDriverID().compareTo(driverID) == 0) {
 					found = true;
 					done = true;
-
-				} // if
-
-			} // if
-
-		} // while
-
+				}
+			}
+		}
 		if (found) {
-
 			return (currentObject);
-
 		} else {
-
 			return (null);
-
-		} // if
-
-	} // findTeacherByID
-
-} // DriverList
+		}
+	}
+}

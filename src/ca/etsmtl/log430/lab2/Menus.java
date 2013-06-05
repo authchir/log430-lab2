@@ -1,5 +1,7 @@
 package ca.etsmtl.log430.lab2;
 
+import java.util.Arrays;
+
 /**
  * This class presents the user with menus, accepts their choice, ensures their
  * choice is valid, and returns their choice to the caller. The menu is
@@ -46,15 +48,15 @@ public class Menus {
 			System.out.println("3) List deliveries currently assigned to a driver today");
 			System.out.println("4) List drivers currently assigned to a delivery today");
 			System.out.println("5) Assign a driver to a delivery");
+			System.out.println("6) List deliveries a driver has made this current week");
 			System.out.println("X) Exit");
 			System.out.print("\n\nEnter your choice and press return >> ");
 
 			userChoice = terminal.keyboardReadChar();
 
-			if ((userChoice != 'X') && (userChoice != 'x')
-					&& (userChoice < '1') && (userChoice != '2')
-					&& (userChoice != '3') && (userChoice < '4')
-					&& (userChoice != '5')) {
+			char[] choices = {'X', 'x', '1', '2', '3', '4', '5', '6'};
+			
+			if (!Arrays.asList(choices).contains(userChoice)) {
 
 				System.out.print("\n\n*** Invalid Choice:: " + userChoice
 						+ " ***");
@@ -80,7 +82,7 @@ public class Menus {
 		System.out.print("\n\nEnter driver ID and press return >> ");
 		userChoice = terminal.keyboardReadString();
 
-		driver = list.findTeacherByID(userChoice);
+		driver = list.findDriverByID(userChoice);
 
 		if (driver == null) {
 
@@ -107,10 +109,7 @@ public class Menus {
 		if (delivery == null) {
 			System.out.print("\n\n*** Delivery ID:" + userChoiceDeliveryID + " not found ***");
 
-		} // if
-
+		}
 		return (delivery);
-
-	} // pickCourse
-
-} // Menus
+	}
+}

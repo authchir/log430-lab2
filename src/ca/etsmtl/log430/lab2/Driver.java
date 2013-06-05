@@ -58,15 +58,13 @@ public class Driver {
 	private DeliveryList deliveriesAssignedList = new DeliveryList();
 
 	/**
-	 * Registers a student for a course by adding a student for a course.
+	 * Registers a delivery for a course by adding a delivery to the driver.
 	 * 
 	 * @param delivery
 	 */
 	public void assignDelivery(Delivery delivery) {
-
 		getDeliveriesAssigned().addDelivery(delivery);
-
-	} // Register
+	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -115,5 +113,4 @@ public class Driver {
 	public DeliveryList getDeliveriesAssigned() {
 		return deliveriesAssignedList;
 	}
-
-} // Driver class
+}
