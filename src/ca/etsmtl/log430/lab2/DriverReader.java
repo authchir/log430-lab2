@@ -1,5 +1,9 @@
 package ca.etsmtl.log430.lab2;
 
+import ca.etsmtl.log430.lab2.data.DriverList;
+import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
+
 /**
  * This class reads from the InputFile and instantiates the Driver objects in
  * the system. It is assumed that the InputFile is in the local directory,

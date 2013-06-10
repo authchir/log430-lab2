@@ -2,6 +2,11 @@ package ca.etsmtl.log430.lab2;
 
 import java.util.Arrays;
 
+import ca.etsmtl.log430.lab2.data.DeliveryList;
+import ca.etsmtl.log430.lab2.data.DriverList;
+import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
+
 /**
  * This class presents the user with menus, accepts their choice, ensures their
  * choice is valid, and returns their choice to the caller. The menu is

@@ -1,4 +1,8 @@
 package ca.etsmtl.log430.lab2;
+
+import ca.etsmtl.log430.lab2.data.DeliveryList;
+import ca.etsmtl.log430.lab2.entities.Delivery;
+
 /**
  * This class will read from the InputFile and instantiate the Delivery objects
  * in the system. It is assumed that the InputFile is in the local directory,

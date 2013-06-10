@@ -1,4 +1,6 @@
-package ca.etsmtl.log430.lab2;
+package ca.etsmtl.log430.lab2.entities;
+
+import ca.etsmtl.log430.lab2.data.DeliveryList;
 
 /**
  * This class defines the Driver object for the system. Besides the static

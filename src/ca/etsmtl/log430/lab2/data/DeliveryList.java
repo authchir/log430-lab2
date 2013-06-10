@@ -1,4 +1,7 @@
-package ca.etsmtl.log430.lab2;
+package ca.etsmtl.log430.lab2.data;
+
+import ca.etsmtl.log430.lab2.List;
+import ca.etsmtl.log430.lab2.entities.Delivery;
 
 /**
  * This class is used by various other classes that need to keep a list of

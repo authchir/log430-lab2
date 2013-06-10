@@ -1,5 +1,10 @@
 package ca.etsmtl.log430.lab2;
 
+import ca.etsmtl.log430.lab2.data.DeliveryList;
+import ca.etsmtl.log430.lab2.data.DriverList;
+import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
+
 /**
  * This class displays various types of information on courses and teachers
  * (individually and as lists) to the screen.

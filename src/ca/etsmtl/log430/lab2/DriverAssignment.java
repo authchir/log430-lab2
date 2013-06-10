@@ -1,5 +1,8 @@
 package ca.etsmtl.log430.lab2;
 
+import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
+
 /**
  * Main class for assignment 2 for LOG430, Architecture logicielle.
  * 
