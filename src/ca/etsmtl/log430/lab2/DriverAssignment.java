@@ -66,8 +66,8 @@ public class DriverAssignment {
 
 			boolean done; // Loop invariant
 			char userChoice; // User's menu choice
-			Delivery myCourse = null; // A course object
-			Driver myTeacher = null; // A teacher object
+			Delivery delivery = null; // A delivery object
+			Driver driver = null; // A driver object
 
 			// Instantiates a menu object
 			Menus menu = new Menus();
@@ -85,11 +85,11 @@ public class DriverAssignment {
 			 * file is provided as drivers.txt and deliveries.txt
 			 */
 
-			DeliveryReader myCourseList = new DeliveryReader(argv[0]);
-			DriverReader myTeacherList = new DriverReader(argv[1]);
+			DeliveryReader deliveriesList = new DeliveryReader(argv[0]);
+			DriverReader driversList = new DriverReader(argv[1]);
 
-			if ((myCourseList.getListOfDeliveries() == null)
-					|| (myTeacherList.getListOfDrivers() == null)) {
+			if ((deliveriesList.getListOfDeliveries() == null)
+					|| (driversList.getListOfDrivers() == null)) {
 				System.out
 						.println("\n\n *** The course list and/or the teacher"
 								+ " list was not initialized ***");
@@ -105,58 +105,57 @@ public class DriverAssignment {
 
 				case '1':
 
-					display.displayDriverList(myTeacherList
+					display.displayDriverList(driversList
 							.getListOfDrivers());
 					break;
 
 				case '2':
 
-					display.displayDeliveryList(myCourseList.getListOfDeliveries());
+					display.displayDeliveryList(deliveriesList.getListOfDeliveries());
 					break;
 
 				case '3':
 
-					display.displayDriverList(myTeacherList
+					display.displayDriverList(driversList
 							.getListOfDrivers());
-					myTeacher = menu.pickDriver(myTeacherList
+					driver = menu.pickDriver(driversList
 							.getListOfDrivers());
-					if (myTeacher != null) {
-						display.displayDeliveriesAssignedToDriver(myTeacher);
+					if (driver != null) {
+						display.displayDeliveriesAssignedToDriver(driver);
 					} // if
 					break;
 
 				case '4':
 
-					display.displayDeliveryList(myCourseList.getListOfDeliveries());
-					myCourse = menu.pickDelivery(myCourseList.getListOfDeliveries());
+					display.displayDeliveryList(deliveriesList.getListOfDeliveries());
+					delivery = menu.pickDelivery(deliveriesList.getListOfDeliveries());
 
-					if (myCourse != null) {
-						display.displayDriversAssignedToDelivery(myCourse);
+					if (delivery != null) {
+						display.displayDriversAssignedToDelivery(delivery);
 					} // if
 					break;
 
 				case '5':
 
-					display.displayDriverList(myTeacherList
+					display.displayDriverList(driversList
 							.getListOfDrivers());
-					myTeacher = menu.pickDriver(myTeacherList
+					driver = menu.pickDriver(driversList
 							.getListOfDrivers());
 
-					if (myTeacher != null) {
-						display.displayDeliveryList(myCourseList
+					if (driver != null) {
+						display.displayDeliveryList(deliveriesList
 								.getListOfDeliveries());
-						myCourse = menu.pickDelivery(myCourseList
+						delivery = menu.pickDelivery(deliveriesList
 								.getListOfDeliveries());
-						if (myCourse != null) {
-							myCourse.assignDriver(myTeacher);
-							myTeacher.assignDelivery(myCourse);
+						if (delivery != null) {
+							delivery.assignDriver(driver);
+							driver.assignDelivery(delivery);
 						} // if
 					} // if
 
 					break;
 
 				case 'X':
-
 				case 'x':
 					done = true;
 				} // switch
