@@ -56,7 +56,7 @@ public class Menus {
 
 			char[] choices = {'X', 'x', '1', '2', '3', '4', '5', '6'};
 			
-			if (!Arrays.asList(choices).contains(userChoice)) {
+			if (Arrays.asList(choices).indexOf(userChoice) != -1) {
 
 				System.out.print("\n\n*** Invalid Choice:: " + userChoice
 						+ " ***");
