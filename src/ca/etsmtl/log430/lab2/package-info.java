@@ -27,7 +27,7 @@
  * and dispatches commands at the user's request. When the program is started,
  * the driver objects are initialized from a file (<tt>drivers.txt</tt> is an
  * example). The format of this file is listed in the
- * {@link ca.etsmtl.log430.lab2.DriverReader DriverReader} class header.
+ * {@link ca.etsmtl.log430.lab2.data.DriverReader DriverReader} class header.
  * The delivery objects are initialized from another file (<tt>deliveries.txt</tt> is
  * an example). The format of this file is listed in the
  * {@link ca.etsmtl.log430.lab2.DeliveryReader DeliveryReader} class header.<br><br>

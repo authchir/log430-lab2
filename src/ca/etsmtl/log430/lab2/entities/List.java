@@ -1,5 +1,6 @@
-package ca.etsmtl.log430.lab2;
+package ca.etsmtl.log430.lab2.entities;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -97,5 +98,6 @@ public class List {
 		vectorIndex = 0;
 
 	} // goToFrontOfList
+
 
 } // List Class

@@ -1,9 +1,8 @@
-package ca.etsmtl.log430.lab2;
+package ca.etsmtl.log430.lab2.entities;
 
-import ca.etsmtl.log430.lab2.data.DeliveryList;
-import ca.etsmtl.log430.lab2.data.DriverList;
-import ca.etsmtl.log430.lab2.entities.Delivery;
-import ca.etsmtl.log430.lab2.entities.Driver;
+import java.util.ArrayList;
+
+import ca.etsmtl.log430.lab2.Termio;
 
 /**
  * This class displays various types of information on courses and teachers
@@ -174,35 +173,12 @@ public class Displays {
 	 * 
 	 * @param list
 	 */
-	public void displayDriverList(DriverList list) {
-
-		boolean done;
-		Driver driver;
-
+	public void displayDriverList(ArrayList<Driver> list) {
 		System.out.print("\n");
 		lineCheck(1);
-
-		list.goToFrontOfList();
-
-		done = false;
-
-		while (!done) {
-
-			driver = list.getNextDriver();
-
-			if (driver == null) {
-
-				done = true;
-
-			} else {
-
-				displayDriver(driver);
-				lineCheck(1);
-
-			} // if
-
-		} // while
-
+		
+		for (Driver d : list)
+			displayDriver(d);
 	}
 
 	/**

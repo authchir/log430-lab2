@@ -1,7 +1,5 @@
-package ca.etsmtl.log430.lab2.data;
+package ca.etsmtl.log430.lab2.entities;
 
-import ca.etsmtl.log430.lab2.List;
-import ca.etsmtl.log430.lab2.entities.Driver;
 
 /**
  * This class is used by various other classes that need to keep a list of drivers on hand. It extends the

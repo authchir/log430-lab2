@@ -2,10 +2,10 @@ package ca.etsmtl.log430.lab2;
 
 import java.util.Arrays;
 
-import ca.etsmtl.log430.lab2.data.DeliveryList;
-import ca.etsmtl.log430.lab2.data.DriverList;
 import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.DeliveryList;
 import ca.etsmtl.log430.lab2.entities.Driver;
+import ca.etsmtl.log430.lab2.entities.DriverList;
 
 /**
  * This class presents the user with menus, accepts their choice, ensures their
@@ -78,25 +78,13 @@ public class Menus {
 
 	} // MainMenu
 
-	public Driver pickDriver(DriverList list) {
+	public String readDriverID() {
 
 		Termio terminal = new Termio();
-		String userChoice;
-		Driver driver = null;
 
 		System.out.print("\n\nEnter driver ID and press return >> ");
-		userChoice = terminal.keyboardReadString();
 
-		driver = list.findDriverByID(userChoice);
-
-		if (driver == null) {
-
-			System.out.println("\n\n*** Driver ID " + userChoice
-					+ " not found ***");
-
-		} // if
-
-		return (driver);
+		return terminal.keyboardReadString();
 
 	}
 

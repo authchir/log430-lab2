@@ -1,7 +1,11 @@
 package ca.etsmtl.log430.lab2;
 
+import ca.etsmtl.log430.lab2.data.DriverData;
+import ca.etsmtl.log430.lab2.data.DriverReader;
 import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Displays;
 import ca.etsmtl.log430.lab2.entities.Driver;
+import ca.etsmtl.log430.lab2.management.DriverManagement;
 
 /**
  * Main class for assignment 2 for LOG430, Architecture logicielle.
@@ -59,10 +63,8 @@ public class DriverAssignment {
 	public static void main(String argv[]) {
 
 		if (argv.length != 2) {
-			System.out.println("\n\nIncorrect number of input parameters -"
-					+ " correct usage:");
-			System.out.println("\njava DriverAssignment <delivery file name>"
-					+ " <driver file name>");
+			System.out.println("\n\nIncorrect number of input parameters -" + " correct usage:");
+			System.out.println("\njava DriverAssignment <delivery file name>" + " <driver file name>");
 		} else {
 
 			// Declarations:
@@ -91,15 +93,19 @@ public class DriverAssignment {
 			DeliveryReader deliveriesList = new DeliveryReader(argv[0]);
 			DriverReader driversList = new DriverReader(argv[1]);
 
-			if ((deliveriesList.getListOfDeliveries() == null)
-					|| (driversList.getListOfDrivers() == null)) {
-				System.out
-						.println("\n\n *** The course list and/or the teacher"
-								+ " list was not initialized ***");
+			if ((deliveriesList.getListOfDeliveries() == null) || (driversList.getListOfDrivers() == null)) {
+				System.out.println("\n\n *** The course list and/or the teacher" + " list was not initialized ***");
 				done = true;
 			} else {
 				done = false;
 			} // if
+
+			try {
+				DriverManagement.loadData(argv[1]);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				System.exit(-1);
+			}
 
 			while (!done) {
 
@@ -107,29 +113,23 @@ public class DriverAssignment {
 				switch (userChoice) {
 
 				case '1':
-
-					display.displayDriverList(driversList
-							.getListOfDrivers());
+					display.displayDriverList(driversList.getListOfDrivers());
 					break;
 
 				case '2':
-
 					display.displayDeliveryList(deliveriesList.getListOfDeliveries());
 					break;
 
 				case '3':
-
-					display.displayDriverList(driversList
-							.getListOfDrivers());
-					driver = menu.pickDriver(driversList
-							.getListOfDrivers());
+					display.displayDriverList(driversList.getListOfDrivers());
+					driver = DriverData.findDriverByID(menu.readDriverID());
+					
 					if (driver != null) {
 						display.displayDeliveriesAssignedToDriver(driver);
 					} // if
 					break;
 
 				case '4':
-
 					display.displayDeliveryList(deliveriesList.getListOfDeliveries());
 					delivery = menu.pickDelivery(deliveriesList.getListOfDeliveries());
 
@@ -139,23 +139,28 @@ public class DriverAssignment {
 					break;
 
 				case '5':
-
-					display.displayDriverList(driversList
-							.getListOfDrivers());
-					driver = menu.pickDriver(driversList
-							.getListOfDrivers());
+					display.displayDriverList(driversList.getListOfDrivers());
+					driver = DriverData.findDriverByID(menu.readDriverID());
 
 					if (driver != null) {
-						display.displayDeliveryList(deliveriesList
-								.getListOfDeliveries());
-						delivery = menu.pickDelivery(deliveriesList
-								.getListOfDeliveries());
+						display.displayDeliveryList(deliveriesList.getListOfDeliveries());
+						delivery = menu.pickDelivery(deliveriesList.getListOfDeliveries());
 						if (delivery != null) {
 							delivery.assignDriver(driver);
 							driver.assignDelivery(delivery);
 						} // if
 					} // if
 
+					break;
+
+				case '6':
+					display.displayDriverList(DriverManagement.getDriversList());
+					driver = DriverData.findDriverByID(menu.readDriverID());
+					
+					if (driver != null) {
+						// TODO: display deliveries
+					}
+					
 					break;
 
 				case 'X':
