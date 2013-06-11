@@ -95,7 +95,7 @@ public class DeliveryReader extends LineOfTextFileReader {
 				} // try
 
 				catch (Exception Error) {
-
+					Error.printStackTrace();
 					return (null);
 
 				} // catch
@@ -167,7 +167,7 @@ public class DeliveryReader extends LineOfTextFileReader {
 				break;
 
 			case 2: // Estimated delivery duration
-				newDelivery.setEstimatedDeliveryDuration(token);
+				newDelivery.setEstimatedDeliveryDuration(Integer.parseInt(token));
 				frontIndex = backIndex + 1;
 				tokenCount++;
 				break;

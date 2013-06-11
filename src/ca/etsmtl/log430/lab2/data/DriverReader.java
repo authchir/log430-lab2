@@ -190,7 +190,7 @@ public class DriverReader extends LineOfTextFileReader {
 				colonIndex = token.indexOf(':');
 				if (colonIndex != -1) {
 					String deliveryID = token.substring(0, colonIndex);
-					String estimatedDuration = token.substring(colonIndex+1);
+					int estimatedDuration = Integer.parseInt(token.substring(colonIndex+1));
 					driver.getDeliveriesMadeList().add(new Delivery(deliveryID, estimatedDuration));
 					frontIndex = backIndex + 1;
 					break;

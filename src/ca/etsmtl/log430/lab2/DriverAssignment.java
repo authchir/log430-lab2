@@ -4,9 +4,11 @@ import ca.etsmtl.log430.lab2.data.DriverData;
 import ca.etsmtl.log430.lab2.entities.Delivery;
 import ca.etsmtl.log430.lab2.entities.Displays;
 import ca.etsmtl.log430.lab2.entities.Driver;
+import ca.etsmtl.log430.lab2.management.ConflictingDeliveryException;
 import ca.etsmtl.log430.lab2.management.DeliveriesManagement;
 import ca.etsmtl.log430.lab2.management.DeliveryDoesNotExistException;
 import ca.etsmtl.log430.lab2.management.DriverAlreadyAssignedException;
+import ca.etsmtl.log430.lab2.management.DriverDoesNotExistException;
 import ca.etsmtl.log430.lab2.management.DriverManagement;
 
 /**
@@ -153,11 +155,14 @@ public class DriverAssignment {
 						
 						try {
 							DeliveriesManagement.assignDriver(delivery, driver);
-							DriverManagement.assignDelivery(driver, delivery);
 						} catch (DriverAlreadyAssignedException e) {
 							display.displayError("This delivery has already been assigned. Cannot assign driver.");
 						} catch (DeliveryDoesNotExistException e) {
 							display.displayError("This delivery does not exist.");
+						} catch (DriverDoesNotExistException e) {
+							display.displayError("This driver does not exist.");
+						} catch (ConflictingDeliveryException e) {
+							display.displayError("A delivery already assigned to this driver conflicts with the selected delivery.");
 						}
 						
 					} // if

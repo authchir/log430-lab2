@@ -45,4 +45,16 @@ public  class DriverData {
 		return true;
 	}
 
+	public static Driver getDriver(Driver driver) {
+		if (driver == null)
+			return null;
+		
+		int index = data.indexOf(driver);
+		
+		if (index == -1)
+			return null;
+		
+		return data.get(index);
+	}
+
 }

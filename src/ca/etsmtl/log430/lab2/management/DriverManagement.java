@@ -13,16 +13,39 @@ public class DriverManagement {
 		DriverData.loadDataFromFile(path);
 	}
 	
-	public static boolean assignDelivery(Driver driver, Delivery delivery) {
-		return DriverData.assignDelivery(driver, delivery);
+	public static boolean assignDelivery(Driver driver, Delivery newDelivery) throws DriverDoesNotExistException, ConflictingDeliveryException {
+		Driver d = getDriver(driver);
+		
+		if (d == null)
+			throw new DriverDoesNotExistException();
+		
+		for (Delivery delivery : d.getDeliveriesAssigned()) {
+			if (newDelivery.getDesiredDeliveryTime() <= delivery.getDesiredDeliveryTime())
+				if ((newDelivery.getDesiredDeliveryTime() + newDelivery.getEstimatedDeliveryDuration()) >= (delivery.getDesiredDeliveryTime() + delivery.getEstimatedDeliveryDuration()))
+					throw new ConflictingDeliveryException();
+			
+			if (newDelivery.getDesiredDeliveryTime() >= delivery.getDesiredDeliveryTime())
+				if (newDelivery.getDesiredDeliveryTime() < (delivery.getDesiredDeliveryTime() + delivery.getEstimatedDeliveryDuration()))
+					throw new ConflictingDeliveryException();
+
+			if ((newDelivery.getDesiredDeliveryTime() + newDelivery.getEstimatedDeliveryDuration()) > delivery.getDesiredDeliveryTime())
+				if ((newDelivery.getDesiredDeliveryTime() + newDelivery.getEstimatedDeliveryDuration()) <= (delivery.getDesiredDeliveryTime() + delivery.getEstimatedDeliveryDuration()))
+					throw new ConflictingDeliveryException();
+		}
+
+		return DriverData.assignDelivery(driver, newDelivery);
 	}
-	
+
 	public static ArrayList<Delivery> getDeliveriesMadeByDriver(String driverID) {
 		return DriverData.getDeliveriesMadeForDriver(driverID);
 	}
 
 	public static ArrayList<Driver> getDriversList() {
 		return DriverData.getDriverList();
+	}
+
+	public static Driver getDriver(Driver driver) {
+		return DriverData.getDriver(driver);
 	}
 
 }

@@ -12,7 +12,7 @@ public class DeliveriesManagement {
 		DeliveriesData.loadDataFromFile(path);
 	}
 	
-	public static boolean assignDriver(Delivery delivery, Driver driver) throws DriverAlreadyAssignedException, DeliveryDoesNotExistException {
+	public static boolean assignDriver(Delivery delivery, Driver driver) throws DriverAlreadyAssignedException, DeliveryDoesNotExistException, DriverDoesNotExistException, ConflictingDeliveryException {
 		Delivery d = getDelivery(delivery);
 		
 		if (d == null)
@@ -20,6 +20,8 @@ public class DeliveriesManagement {
 		
 		if (d.getDriverAssigned() != null)
 			throw new DriverAlreadyAssignedException();
+		
+		DriverManagement.assignDelivery(driver, delivery);
 		
 		return DeliveriesData.assignDriver(delivery, driver);
 	}
