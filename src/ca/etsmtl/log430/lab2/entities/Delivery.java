@@ -1,5 +1,7 @@
 package ca.etsmtl.log430.lab2.entities;
 
+import java.util.ArrayList;
+
 /**
  * This class defines the Delivery object for the system.
  * 
@@ -51,7 +53,7 @@ public class Delivery {
 	/**
 	 * List of teachers assigned to the course
 	 */
-	private DriverList driversAssigned = new DriverList();
+	private ArrayList<Driver> driversAssigned = new ArrayList<Driver>();
 
 	public Delivery() {
 		this(null);
@@ -73,7 +75,7 @@ public class Delivery {
 	 * @param driver
 	 */
 	public void assignDriver(Driver driver) {
-		driversAssigned.addDriver(driver);
+		driversAssigned.add(driver);
 	}
 
 	public void setDeliveryID(String deliveryID) {
@@ -108,11 +110,11 @@ public class Delivery {
 		this.address = address;
 	}
 
-	public DriverList getDriversAssigned() {
+	public ArrayList<Driver> getDriversAssigned() {
 		return driversAssigned;
 	}
 
-	public void setDriversAssigned(DriverList driversAssigned) {
+	public void setDriversAssigned(ArrayList<Driver> driversAssigned) {
 		this.driversAssigned = driversAssigned;
 	}
 

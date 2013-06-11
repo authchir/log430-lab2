@@ -3,7 +3,6 @@ package ca.etsmtl.log430.lab2.data;
 import java.util.ArrayList;
 
 import ca.etsmtl.log430.lab2.entities.Delivery;
-import ca.etsmtl.log430.lab2.entities.DeliveryList;
 import ca.etsmtl.log430.lab2.entities.Driver;
 
 public  class DriverData {
@@ -34,6 +33,16 @@ public  class DriverData {
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Driver> getDriverList() {
 		return (ArrayList<Driver>) data.clone();
+	}
+
+	public static boolean assignDelivery(Driver driver, Delivery delivery) {
+		int index = data.indexOf(driver);
+		
+		if (index == -1)
+			return false;
+		
+		data.get(index).assignDelivery(delivery);
+		return true;
 	}
 
 }

@@ -7,12 +7,14 @@ import ca.etsmtl.log430.lab2.data.DriverData;
 import ca.etsmtl.log430.lab2.entities.Delivery;
 import ca.etsmtl.log430.lab2.entities.Driver;
 
-import ca.etsmtl.log430.lab2.entities.DeliveryList;
-
 public class DriverManagement {
 	
 	public static void loadData(String path) throws Exception {
 		DriverData.loadDataFromFile(path);
+	}
+	
+	public static boolean assignDelivery(Driver driver, Delivery delivery) {
+		return DriverData.assignDelivery(driver, delivery);
 	}
 	
 	public static ArrayList<Delivery> getDeliveriesMadeByDriver(String driverID) {

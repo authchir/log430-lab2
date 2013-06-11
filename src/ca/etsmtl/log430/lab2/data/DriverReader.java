@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import ca.etsmtl.log430.lab2.LineOfTextFileReader;
 import ca.etsmtl.log430.lab2.entities.Delivery;
 import ca.etsmtl.log430.lab2.entities.Driver;
-import ca.etsmtl.log430.lab2.entities.DriverList;
 
 /**
  * This class reads from the InputFile and instantiates the Driver objects in

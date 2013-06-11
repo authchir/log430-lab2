@@ -3,6 +3,7 @@ package ca.etsmtl.log430.lab2.data;
 import java.util.ArrayList;
 
 import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
 
 public class DeliveriesData {
 	
@@ -17,6 +18,16 @@ public class DeliveriesData {
 			throw new Exception("Deliveries data could not be loaded. No data.");
 	}
 	
+	public static boolean assignDriver(Delivery delivery, Driver driver) {
+		int index = data.indexOf(delivery);
+		
+		if (index == -1)
+			return false;
+		
+		data.get(index).assignDriver(driver);
+		return true;
+	}
+	
 	public static Delivery getDeliveryByID(String deliveryID) {
 		for (Delivery d : data)
 			if (d.getDeliveryID().compareToIgnoreCase(deliveryID) == 0)
@@ -28,6 +39,16 @@ public class DeliveriesData {
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Delivery> getListOfDeliveries() {
 		return (ArrayList<Delivery>) data.clone();
+	}
+
+	public static ArrayList<Delivery> getUnassignedDeliveriesList() {
+		ArrayList<Delivery> list = new ArrayList<Delivery>();
+		
+		for (Delivery d : data)
+			if (d.getDriversAssigned().isEmpty())
+				list.add(d);
+		
+		return list;
 	}
 
 }

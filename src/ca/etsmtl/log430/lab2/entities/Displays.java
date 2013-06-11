@@ -90,10 +90,6 @@ public class Displays {
 	 * @param delivery
 	 */
 	public void displayDriversAssignedToDelivery(Delivery delivery) {
-
-		boolean done;
-		Driver driver;
-
 		System.out.println("\nDrivers assigned to: " + " " + delivery.getDeliveryID() + " " + delivery.getAddress() + " "
 				+ delivery.getDesiredDeliveryTime() + " :");
 		lineCheck(1);
@@ -101,25 +97,8 @@ public class Displays {
 		System.out.println("===========================================================");
 		lineCheck(1);
 
-		delivery.getDriversAssigned().goToFrontOfList();
-		done = false;
-
-		while (!done) {
-
-			driver = delivery.getDriversAssigned().getNextDriver();
-
-			if (driver == null) {
-
-				done = true;
-
-			} else {
-
-				displayDriver(driver);
-
-			} // if
-
-		} // while
-
+		for (Driver d : delivery.getDriversAssigned())
+			displayDriver(d);
 	}
 
 	/**

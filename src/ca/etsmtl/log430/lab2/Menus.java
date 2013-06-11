@@ -1,12 +1,6 @@
 package ca.etsmtl.log430.lab2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-
-import ca.etsmtl.log430.lab2.entities.Delivery;
-import ca.etsmtl.log430.lab2.entities.DeliveryList;
-import ca.etsmtl.log430.lab2.entities.Driver;
-import ca.etsmtl.log430.lab2.entities.DriverList;
 
 /**
  * This class presents the user with menus, accepts their choice, ensures their
@@ -56,13 +50,14 @@ public class Menus {
 			System.out.println("3) List deliveries currently assigned to a driver today");
 			System.out.println("4) List drivers currently assigned to a delivery today");
 			System.out.println("5) Assign a driver to a delivery");
-			System.out.println("6) List deliveries a driver has made this current week");
+			System.out.println("6) #1 List deliveries a driver has made this current week");
+			System.out.println("7) #2 List deliveries not yet assigned to drivers");
 			System.out.println("X) Exit");
 			System.out.print("\n\nEnter your choice and press return >> ");
 
 			userChoice = terminal.keyboardReadChar();
 
-			char[] choices = { 'X', 'x', '1', '2', '3', '4', '5', '6' };
+			char[] choices = { 'X', 'x', '1', '2', '3', '4', '5', '6', '7' };
 
 			if (Arrays.asList(choices).indexOf(userChoice) != -1) {
 

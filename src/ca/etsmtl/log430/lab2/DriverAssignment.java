@@ -1,8 +1,6 @@
 package ca.etsmtl.log430.lab2;
 
-import ca.etsmtl.log430.lab2.data.DeliveryReader;
 import ca.etsmtl.log430.lab2.data.DriverData;
-import ca.etsmtl.log430.lab2.data.DriverReader;
 import ca.etsmtl.log430.lab2.entities.Delivery;
 import ca.etsmtl.log430.lab2.entities.Displays;
 import ca.etsmtl.log430.lab2.entities.Driver;
@@ -150,10 +148,9 @@ public class DriverAssignment {
 					if (driver != null) {
 						display.displayDeliveryList(DeliveriesManagement.getListOfDeliveries());
 						delivery = DeliveriesManagement.getDeliveryById(menu.readDeliveryID());
-						if (delivery != null) {
-							delivery.assignDriver(driver);
-							driver.assignDelivery(delivery);
-						} // if
+						
+						DeliveriesManagement.assignDriver(delivery, driver);
+						DriverManagement.assignDelivery(driver, delivery);
 					} // if
 
 					break;
@@ -166,6 +163,10 @@ public class DriverAssignment {
 						display.displayDeliveryList(driver.getDeliveriesMadeList());
 					}
 					
+					break;
+
+				case '7':
+					display.displayDeliveryList(DeliveriesManagement.getUnassignedDeliveriesList());
 					break;
 
 				case 'X':

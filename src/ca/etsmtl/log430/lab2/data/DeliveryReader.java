@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import ca.etsmtl.log430.lab2.LineOfTextFileReader;
 import ca.etsmtl.log430.lab2.entities.Delivery;
-import ca.etsmtl.log430.lab2.entities.DeliveryList;
 
 /**
  * This class will read from the InputFile and instantiate the Delivery objects
@@ -71,7 +70,7 @@ public class DeliveryReader extends LineOfTextFileReader {
 
 		String text;
 		boolean done;
-		 ArrayList<Delivery> list = new  ArrayList<Delivery>();
+		ArrayList<Delivery> list = new ArrayList<Delivery>();
 
 		if (openFile(inputFile)) {
 
