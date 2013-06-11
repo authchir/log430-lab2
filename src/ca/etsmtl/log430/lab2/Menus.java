@@ -1,5 +1,6 @@
 package ca.etsmtl.log430.lab2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import ca.etsmtl.log430.lab2.entities.Delivery;
@@ -11,13 +12,15 @@ import ca.etsmtl.log430.lab2.entities.DriverList;
  * This class presents the user with menus, accepts their choice, ensures their
  * choice is valid, and returns their choice to the caller. The menu is
  * presented as follows:
+ * 
  * <pre>
  *    1) List drivers
  *    2) List deliveries
  *    3) List deliveries currently assigned to a driver today
  *    4) List drivers currently assigned to a delivery today
  *    5) Assign a driver to a delivery
- *    X) Exit.</pre>
+ *    X) Exit.
+ * </pre>
  * 
  * @author A.J. Lattanze, CMU
  * @version 1.4, 2012-May-31.
@@ -59,12 +62,11 @@ public class Menus {
 
 			userChoice = terminal.keyboardReadChar();
 
-			char[] choices = {'X', 'x', '1', '2', '3', '4', '5', '6'};
-			
+			char[] choices = { 'X', 'x', '1', '2', '3', '4', '5', '6' };
+
 			if (Arrays.asList(choices).indexOf(userChoice) != -1) {
 
-				System.out.print("\n\n*** Invalid Choice:: " + userChoice
-						+ " ***");
+				System.out.print("\n\n*** Invalid Choice:: " + userChoice + " ***");
 
 			} else {
 
@@ -79,30 +81,15 @@ public class Menus {
 	} // MainMenu
 
 	public String readDriverID() {
-
 		Termio terminal = new Termio();
-
 		System.out.print("\n\nEnter driver ID and press return >> ");
-
 		return terminal.keyboardReadString();
 
 	}
 
-	public Delivery pickDelivery(DeliveryList list) {
-
+	public String readDeliveryID() {
 		Termio terminal = new Termio();
-		String userChoiceDeliveryID;
-		Delivery delivery = null;
-
 		System.out.print("\nEnter delivery ID and press return >> ");
-		userChoiceDeliveryID = terminal.keyboardReadString();
-
-		delivery = list.findDelivery(userChoiceDeliveryID);
-
-		if (delivery == null) {
-			System.out.print("\n\n*** Delivery ID:" + userChoiceDeliveryID + " not found ***");
-
-		}
-		return (delivery);
+		return terminal.keyboardReadString();
 	}
 }

@@ -1,6 +1,5 @@
 package ca.etsmtl.log430.lab2.entities;
 
-
 /**
  * This class defines the Delivery object for the system.
  * 
@@ -50,7 +49,7 @@ public class Delivery {
 	private String estimatedDeliveryDuration;
 
 	/**
-	 * List of teachers assigned to the course 
+	 * List of teachers assigned to the course
 	 */
 	private DriverList driversAssigned = new DriverList();
 
@@ -117,4 +116,21 @@ public class Delivery {
 		this.driversAssigned = driversAssigned;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.getDeliveryID() + " ");
+		
+		if (this.getDesiredDeliveryTime() != null)
+			sb.append(this.getDesiredDeliveryTime() + " ");
+		
+		if (this.getEstimatedDeliveryDuration() != null)
+			sb.append(this.getEstimatedDeliveryDuration() + " ");
+		
+		if (this.getAddress() != null)
+			sb.append("- " + this.getAddress());
+		
+		return sb.toString();
+	}
 } // Delivery class

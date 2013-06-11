@@ -30,7 +30,7 @@
  * {@link ca.etsmtl.log430.lab2.data.DriverReader DriverReader} class header.
  * The delivery objects are initialized from another file (<tt>deliveries.txt</tt> is
  * an example). The format of this file is listed in the
- * {@link ca.etsmtl.log430.lab2.DeliveryReader DeliveryReader} class header.<br><br>
+ * {@link ca.etsmtl.log430.lab2.data.DeliveryReader DeliveryReader} class header.<br><br>
  * 
  * <b>Running the program:</b><br><br>
  * 

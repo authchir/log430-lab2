@@ -68,8 +68,7 @@ public class Displays {
 	 */
 	public void displayDriver(Driver driver) {
 
-		System.out.print(driver.getDriverID() + " " + driver.getFirstName()
-				+ " ");
+		System.out.print(driver.getDriverID() + " " + driver.getFirstName() + " ");
 		System.out.println(driver.getLastName() + " " + driver.getType());
 
 	}
@@ -82,10 +81,7 @@ public class Displays {
 	 * @param delivery
 	 */
 	public void displayDelivery(Delivery delivery) {
-		System.out.print(delivery.getDeliveryID() + " "
-				+ delivery.getDesiredDeliveryTime() + " ");
-		System.out.println(delivery.getEstimatedDeliveryDuration() + " - "
-				+ delivery.getAddress());
+		System.out.println(delivery);
 	}
 
 	/**
@@ -98,12 +94,11 @@ public class Displays {
 		boolean done;
 		Driver driver;
 
-		System.out.println("\nDrivers assigned to: " + " "
-				+ delivery.getDeliveryID() + " " + delivery.getAddress() + " " + delivery.getDesiredDeliveryTime() + " :");
+		System.out.println("\nDrivers assigned to: " + " " + delivery.getDeliveryID() + " " + delivery.getAddress() + " "
+				+ delivery.getDesiredDeliveryTime() + " :");
 		lineCheck(1);
 
-		System.out
-				.println("===========================================================");
+		System.out.println("===========================================================");
 		lineCheck(1);
 
 		delivery.getDriversAssigned().goToFrontOfList();
@@ -134,37 +129,13 @@ public class Displays {
 	 */
 	public void displayDeliveriesAssignedToDriver(Driver driver) {
 
-		boolean done;
-		Delivery delivery;
-
-		System.out.println("\nDeliveries assigned (today) to : "
-				+ driver.getFirstName() + " " + driver.getLastName() + " "
-				+ driver.getDriverID());
+		System.out.println("\nDeliveries assigned (today) to : " + driver.getFirstName() + " " + driver.getLastName() + " " + driver.getDriverID());
 		lineCheck(2);
-		System.out
-				.println("========================================================= ");
+		System.out.println("========================================================= ");
 		lineCheck(1);
 
-		driver.getDeliveriesAssigned().goToFrontOfList();
-		done = false;
-
-		while (!done) {
-
-			delivery = driver.getDeliveriesAssigned().getNextDelivery();
-
-			if (delivery == null) {
-
-				done = true;
-
-			} else {
-
-				displayDelivery(delivery);
-				lineCheck(2);
-
-			} // if
-
-		} // while
-
+		for (Delivery d : driver.getDeliveriesAssigned())
+			displayDelivery(d);
 	}
 
 	/**
@@ -176,7 +147,7 @@ public class Displays {
 	public void displayDriverList(ArrayList<Driver> list) {
 		System.out.print("\n");
 		lineCheck(1);
-		
+
 		for (Driver d : list)
 			displayDriver(d);
 	}
@@ -187,34 +158,12 @@ public class Displays {
 	 * 
 	 * @param list
 	 */
-	public void displayDeliveryList(DeliveryList list) {
-
-		boolean done;
-		Delivery delivery;
-
+	public void displayDeliveryList(ArrayList<Delivery> list) {
 		System.out.print("\n");
 		lineCheck(1);
 
-		list.goToFrontOfList();
-		done = false;
-
-		while (!done) {
-
-			delivery = list.getNextDelivery();
-
-			if (delivery == null) {
-
-				done = true;
-
-			} else {
-
-				displayDelivery(delivery);
-				lineCheck(1);
-
-			} // if
-
-		} // while
-
+		for (Delivery d : list)
+			displayDelivery(d);
 	}
 
 } // Display

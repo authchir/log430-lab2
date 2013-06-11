@@ -1,5 +1,7 @@
 package ca.etsmtl.log430.lab2.entities;
 
+import java.util.ArrayList;
+
 
 /**
  * This class defines the Driver object for the system. Besides the static
@@ -51,12 +53,12 @@ public class Driver {
 	/**
 	 *  List of deliveries previously made (before today) by the driver
 	 */
-	private DeliveryList deliveriesMadeList = new DeliveryList();
+	private ArrayList<Delivery> deliveriesMadeList = new ArrayList<Delivery>();
 
 	/**
 	 *  List of deliveries assigned to the driver for the current day
 	 */
-	private DeliveryList deliveriesAssignedList = new DeliveryList();
+	private ArrayList<Delivery> deliveriesAssignedList = new ArrayList<Delivery>();
 
 	/**
 	 * Registers a delivery for a course by adding a delivery to the driver.
@@ -64,7 +66,7 @@ public class Driver {
 	 * @param delivery
 	 */
 	public void assignDelivery(Delivery delivery) {
-		getDeliveriesAssigned().addDelivery(delivery);
+		getDeliveriesAssigned().add(delivery);
 	}
 
 	public void setLastName(String lastName) {
@@ -99,19 +101,19 @@ public class Driver {
 		return driverType;
 	}
 
-	public void setDeliveriesMadeList(DeliveryList deliveriesMadeList) {
+	public void setDeliveriesMadeList(ArrayList<Delivery> deliveriesMadeList) {
 		this.deliveriesMadeList = deliveriesMadeList;
 	}
 
-	public DeliveryList getDeliveriesMadeList() {
+	public ArrayList<Delivery> getDeliveriesMadeList() {
 		return deliveriesMadeList;
 	}
 
-	public void setDeliveriesAssigned(DeliveryList deliveriesAssigned) {
+	public void setDeliveriesAssigned(ArrayList<Delivery> deliveriesAssigned) {
 		this.deliveriesAssignedList = deliveriesAssigned;
 	}
 
-	public DeliveryList getDeliveriesAssigned() {
+	public ArrayList<Delivery> getDeliveriesAssigned() {
 		return deliveriesAssignedList;
 	}
 }
