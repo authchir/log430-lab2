@@ -53,7 +53,7 @@ public class Delivery {
 	/**
 	 * List of teachers assigned to the course
 	 */
-	private ArrayList<Driver> driversAssigned = new ArrayList<Driver>();
+	private Driver driverAssigned = null;
 
 	public Delivery() {
 		this(null);
@@ -75,7 +75,7 @@ public class Delivery {
 	 * @param driver
 	 */
 	public void assignDriver(Driver driver) {
-		driversAssigned.add(driver);
+		this.driverAssigned = driver;
 	}
 
 	public void setDeliveryID(String deliveryID) {
@@ -110,12 +110,8 @@ public class Delivery {
 		this.address = address;
 	}
 
-	public ArrayList<Driver> getDriversAssigned() {
-		return driversAssigned;
-	}
-
-	public void setDriversAssigned(ArrayList<Driver> driversAssigned) {
-		this.driversAssigned = driversAssigned;
+	public Driver getDriverAssigned() {
+		return driverAssigned;
 	}
 
 	@Override

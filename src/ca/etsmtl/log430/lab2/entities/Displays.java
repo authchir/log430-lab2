@@ -97,8 +97,7 @@ public class Displays {
 		System.out.println("===========================================================");
 		lineCheck(1);
 
-		for (Driver d : delivery.getDriversAssigned())
-			displayDriver(d);
+		displayDriver(delivery.getDriverAssigned());
 	}
 
 	/**
@@ -143,6 +142,10 @@ public class Displays {
 
 		for (Delivery d : list)
 			displayDelivery(d);
+	}
+	
+	public void displayError(String message) {
+		System.err.println("Error: " + message);
 	}
 
 } // Display

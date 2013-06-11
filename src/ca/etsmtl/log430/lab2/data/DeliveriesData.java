@@ -45,10 +45,19 @@ public class DeliveriesData {
 		ArrayList<Delivery> list = new ArrayList<Delivery>();
 		
 		for (Delivery d : data)
-			if (d.getDriversAssigned().isEmpty())
+			if (d.getDriverAssigned() == null)
 				list.add(d);
 		
 		return list;
+	}
+
+	public static Delivery getDelivery(Delivery delivery) {
+		int index = data.indexOf(delivery);
+		
+		if (index == -1)
+			return null;
+		
+		return data.get(index);
 	}
 
 }

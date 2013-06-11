@@ -5,6 +5,8 @@ import ca.etsmtl.log430.lab2.entities.Delivery;
 import ca.etsmtl.log430.lab2.entities.Displays;
 import ca.etsmtl.log430.lab2.entities.Driver;
 import ca.etsmtl.log430.lab2.management.DeliveriesManagement;
+import ca.etsmtl.log430.lab2.management.DeliveryDoesNotExistException;
+import ca.etsmtl.log430.lab2.management.DriverAlreadyAssignedException;
 import ca.etsmtl.log430.lab2.management.DriverManagement;
 
 /**
@@ -146,11 +148,18 @@ public class DriverAssignment {
 					driver = DriverData.findDriverByID(menu.readDriverID());
 
 					if (driver != null) {
-						display.displayDeliveryList(DeliveriesManagement.getListOfDeliveries());
+						display.displayDeliveryList(DeliveriesManagement.getUnassignedDeliveriesList());
 						delivery = DeliveriesManagement.getDeliveryById(menu.readDeliveryID());
 						
-						DeliveriesManagement.assignDriver(delivery, driver);
-						DriverManagement.assignDelivery(driver, delivery);
+						try {
+							DeliveriesManagement.assignDriver(delivery, driver);
+							DriverManagement.assignDelivery(driver, delivery);
+						} catch (DriverAlreadyAssignedException e) {
+							display.displayError("This delivery has already been assigned. Cannot assign driver.");
+						} catch (DeliveryDoesNotExistException e) {
+							display.displayError("This delivery does not exist.");
+						}
+						
 					} // if
 
 					break;

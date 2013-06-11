@@ -12,7 +12,15 @@ public class DeliveriesManagement {
 		DeliveriesData.loadDataFromFile(path);
 	}
 	
-	public static boolean assignDriver(Delivery delivery, Driver driver) {
+	public static boolean assignDriver(Delivery delivery, Driver driver) throws DriverAlreadyAssignedException, DeliveryDoesNotExistException {
+		Delivery d = getDelivery(delivery);
+		
+		if (d == null)
+			throw new DeliveryDoesNotExistException();
+		
+		if (d.getDriverAssigned() != null)
+			throw new DriverAlreadyAssignedException();
+		
 		return DeliveriesData.assignDriver(delivery, driver);
 	}
 	
@@ -22,6 +30,10 @@ public class DeliveriesManagement {
 	
 	public static Delivery getDeliveryById(String deliveryID) {
 		return DeliveriesData.getDeliveryByID(deliveryID);
+	}
+	
+	public static Delivery getDelivery(Delivery delivery) {
+		return DeliveriesData.getDelivery(delivery);
 	}
 	
 	public static ArrayList<Delivery> getListOfDeliveries() {
