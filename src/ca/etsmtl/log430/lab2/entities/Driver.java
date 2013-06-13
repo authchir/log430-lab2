@@ -68,6 +68,15 @@ public class Driver {
 	public void assignDelivery(Delivery delivery) {
 		getDeliveriesAssigned().add(delivery);
 	}
+	
+	public int getAssignedDeliveryTimeCount() {
+		int count = 0;
+		
+		for (Delivery d : deliveriesAssignedList)
+			count += d.getEstimatedDeliveryDuration();
+		
+		return count;
+	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;

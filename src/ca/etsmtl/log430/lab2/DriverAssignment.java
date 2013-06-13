@@ -10,6 +10,7 @@ import ca.etsmtl.log430.lab2.management.DeliveryDoesNotExistException;
 import ca.etsmtl.log430.lab2.management.DriverAlreadyAssignedException;
 import ca.etsmtl.log430.lab2.management.DriverDoesNotExistException;
 import ca.etsmtl.log430.lab2.management.DriverManagement;
+import ca.etsmtl.log430.lab2.management.DriverScheduleFullException;
 
 /**
  * Main class for assignment 2 for LOG430, Architecture logicielle.
@@ -163,6 +164,8 @@ public class DriverAssignment {
 							display.displayError("This driver does not exist.");
 						} catch (ConflictingDeliveryException e) {
 							display.displayError("A delivery already assigned to this driver conflicts with the selected delivery.");
+						} catch (DriverScheduleFullException e) {
+							display.displayError("The driver's schedule is already full, or this delivery will exceed the maximum amount of delivery time.");
 						}
 						
 					} // if

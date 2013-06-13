@@ -12,7 +12,7 @@ public class DeliveriesManagement {
 		DeliveriesData.loadDataFromFile(path);
 	}
 	
-	public static boolean assignDriver(Delivery delivery, Driver driver) throws DriverAlreadyAssignedException, DeliveryDoesNotExistException, DriverDoesNotExistException, ConflictingDeliveryException {
+	public static boolean assignDriver(Delivery delivery, Driver driver) throws DriverAlreadyAssignedException, DeliveryDoesNotExistException, DriverDoesNotExistException, ConflictingDeliveryException, DriverScheduleFullException {
 		Delivery d = getDelivery(delivery);
 		
 		if (d == null)
