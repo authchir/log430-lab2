@@ -1,8 +1,9 @@
-package ca.etsmtl.log430.lab2.entities;
+package ca.etsmtl.log430.lab2;
 
 import java.util.ArrayList;
 
-import ca.etsmtl.log430.lab2.Termio;
+import ca.etsmtl.log430.lab2.entities.Delivery;
+import ca.etsmtl.log430.lab2.entities.Driver;
 
 /**
  * This class displays various types of information on courses and teachers

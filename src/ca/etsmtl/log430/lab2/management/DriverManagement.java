@@ -42,6 +42,10 @@ public class DriverManagement {
 
 		return DriverData.assignDelivery(driver, newDelivery);
 	}
+	
+	public static Driver findDriverByID(String driverID) {
+		return DriverData.findDriverByID(driverID);
+	}
 
 	public static ArrayList<Delivery> getDeliveriesMadeByDriver(String driverID) {
 		return DriverData.getDeliveriesMadeForDriver(driverID);

@@ -39,7 +39,7 @@ public class Test4 extends TestCase {
 	}
 
 	@Test
-	public void test() {
+	public void test1() {
 		Driver driver1 = DriverData.findDriverByID("DRV001");
 		Driver driver2 = DriverData.findDriverByID("DRV002");
 		Delivery delivery = DeliveriesManagement.getDeliveryById("D150");

@@ -1,8 +1,6 @@
 package ca.etsmtl.log430.lab2;
 
-import ca.etsmtl.log430.lab2.data.DriverData;
 import ca.etsmtl.log430.lab2.entities.Delivery;
-import ca.etsmtl.log430.lab2.entities.Displays;
 import ca.etsmtl.log430.lab2.entities.Driver;
 import ca.etsmtl.log430.lab2.management.ConflictingDeliveryException;
 import ca.etsmtl.log430.lab2.management.DeliveriesManagement;
@@ -130,7 +128,7 @@ public class DriverAssignment {
 
 				case '3':
 					display.displayDriverList(DriverManagement.getDriversList());
-					driver = DriverData.findDriverByID(menu.readDriverID());
+					driver = DriverManagement.findDriverByID(menu.readDriverID());
 					
 					if (driver != null) {
 						display.displayDeliveriesAssignedToDriver(driver);
@@ -148,7 +146,7 @@ public class DriverAssignment {
 
 				case '5':
 					display.displayDriverList(DriverManagement.getDriversList());
-					driver = DriverData.findDriverByID(menu.readDriverID());
+					driver = DriverManagement.findDriverByID(menu.readDriverID());
 
 					if (driver != null) {
 						display.displayDeliveryList(DeliveriesManagement.getUnassignedDeliveriesList());
@@ -174,7 +172,7 @@ public class DriverAssignment {
 
 				case '6':
 					display.displayDriverList(DriverManagement.getDriversList());
-					driver = DriverData.findDriverByID(menu.readDriverID());
+					driver = DriverManagement.findDriverByID(menu.readDriverID());
 					
 					if (driver != null) {
 						display.displayDeliveryList(driver.getDeliveriesMadeList());
