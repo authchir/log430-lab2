@@ -20,10 +20,10 @@ public class DriverManagement {
 			throw new DriverDoesNotExistException();
 		
 		if (driver.getType().equals("JNR")) {
-			if (driver.getAssignedDeliveryTimeCount() + newDelivery.getEstimatedDeliveryDuration() >= 1200)
+			if (driver.getAssignedDeliveryTimeCount() + newDelivery.getEstimatedDeliveryDuration() > 1200)
 				throw new DriverScheduleFullException();
 		} else if (driver.getType().equals("SNR"))
-			if (driver.getAssignedDeliveryTimeCount() + newDelivery.getEstimatedDeliveryDuration() >= 800)
+			if (driver.getAssignedDeliveryTimeCount() + newDelivery.getEstimatedDeliveryDuration() > 800)
 				throw new DriverScheduleFullException();
 				
 		for (Delivery delivery : d.getDeliveriesAssigned()) {
