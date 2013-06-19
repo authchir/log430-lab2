@@ -1,4 +1,4 @@
-package ca.etsmtl.log430.lab2;
+package ca.etsmtl.log430.lab2.data;
 
 import java.io.BufferedReader;
 import java.io.File;
