@@ -166,7 +166,7 @@ public class DeliveryReader extends LineOfTextFileReader {
 				break;
 
 			case 2: // Estimated delivery duration
-				newDelivery.setEstimatedDeliveryDuration(Integer.parseInt(token));
+				newDelivery.setEstimatedDeliveryDuration(token);
 				frontIndex = backIndex + 1;
 				tokenCount++;
 				break;

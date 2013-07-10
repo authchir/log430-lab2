@@ -43,12 +43,12 @@ public class Delivery {
 	/**
 	 * Time at which the delivery should be planned
 	 */
-	private int desiredDeliveryTime;
+	private String desiredDeliveryTime;
 
 	/**
 	 * Start time of the course
 	 */
-	private int estimatedDeliveryDuration;
+	private String estimatedDeliveryDuration;
 
 	/**
 	 * List of teachers assigned to the course
@@ -56,10 +56,10 @@ public class Delivery {
 	private Driver driverAssigned = null;
 
 	public Delivery(String deliveryID) {
-		this(deliveryID, 0);
+		this(deliveryID, "");
 	}
 
-	public Delivery(String deliveryID, int estimatedDuration) {
+	public Delivery(String deliveryID, String estimatedDuration) {
 		this.setDeliveryID(deliveryID);
 		this.setEstimatedDeliveryDuration(estimatedDuration);
 	}
@@ -86,18 +86,18 @@ public class Delivery {
 	}
 
 	public void setDesiredDeliveryTime(String time) {
-		this.desiredDeliveryTime = Integer.parseInt(time);
+		this.desiredDeliveryTime = time;
 	}
 
-	public int getDesiredDeliveryTime() {
+	public String getDesiredDeliveryTime() {
 		return desiredDeliveryTime;
 	}
 
-	public void setEstimatedDeliveryDuration(int duration) {
+	public void setEstimatedDeliveryDuration(String duration) {
 		this.estimatedDeliveryDuration = duration;
 	}
 
-	public int getEstimatedDeliveryDuration() {
+	public String getEstimatedDeliveryDuration() {
 		return estimatedDeliveryDuration;
 	}
 
@@ -119,10 +119,10 @@ public class Delivery {
 		
 		sb.append(this.getDeliveryID() + " ");
 		
-		if (this.getDesiredDeliveryTime() != 0)
+		if (this.getDesiredDeliveryTime() != null)
 			sb.append(this.getDesiredDeliveryTime() + " ");
 		
-		if (this.getEstimatedDeliveryDuration() != 0)
+		if (this.getEstimatedDeliveryDuration() != null)
 			sb.append(this.getEstimatedDeliveryDuration() + " ");
 		
 		if (this.getAddress() != null)

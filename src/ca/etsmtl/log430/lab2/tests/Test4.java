@@ -1,5 +1,7 @@
 package ca.etsmtl.log430.lab2.tests;
 
+import java.awt.DisplayMode;
+
 import junit.framework.TestCase;
 
 import org.junit.After;
@@ -53,15 +55,13 @@ public class Test4 extends TestCase {
 	public void testJuniorEqualsMax() {
 		Driver junior = DriverData.findDriverByID("DRV200");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D150"); // 2h
-		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D155"); // 5h
-		Delivery delivery3 = DeliveriesManagement.getDeliveryById("D156"); // 5h
+		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D157"); // 4h
+		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D162"); // 8h
 		
 
 		try {
 			DeliveriesManagement.assignDriver(delivery1, junior);
 			DeliveriesManagement.assignDriver(delivery2, junior);
-			DeliveriesManagement.assignDriver(delivery3, junior);
 		} catch (Exception e) {
 			fail();
 		}
@@ -71,17 +71,13 @@ public class Test4 extends TestCase {
 	public void testJuniorMoreThanMaxWithMultipleDeliveries() {
 		Driver junior = DriverData.findDriverByID("DRV200");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D150"); // 2h
-		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D155"); // 5h
-		Delivery delivery3 = DeliveriesManagement.getDeliveryById("D156"); // 5h
+		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D155"); // 10h
 		
-		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D157"); // 2h
+		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D157"); // 4h
 		
 
 		try {
-			DeliveriesManagement.assignDriver(delivery1, junior);
 			DeliveriesManagement.assignDriver(delivery2, junior);
-			DeliveriesManagement.assignDriver(delivery3, junior);
 		} catch (Exception e) {
 			fail();
 		}
@@ -93,6 +89,7 @@ public class Test4 extends TestCase {
 		} catch (DriverScheduleFullException e) {
 			b = true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail();
 		}
 
@@ -103,7 +100,7 @@ public class Test4 extends TestCase {
 	public void testJuniorMoreThanMaxWithOneDelivery() {
 		Driver junior = DriverData.findDriverByID("DRV200");
 
-		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D177"); // 13h
+		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D177"); // 26h
 
 		boolean b = false;
 
@@ -137,13 +134,10 @@ public class Test4 extends TestCase {
 	public void testSeniorEqualsMax() {
 		Driver senior = DriverData.findDriverByID("DRV300");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D153"); // 3h
-		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D156"); // 5h
+		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D165"); // 8h
 		
-
 		try {
 			DeliveriesManagement.assignDriver(delivery1, senior);
-			DeliveriesManagement.assignDriver(delivery2, senior);
 		} catch (Exception e) {
 			fail();
 		}
@@ -153,14 +147,13 @@ public class Test4 extends TestCase {
 	public void testSeniorMoreThanMaxWithMultipleDeliveries() {
 		Driver senior = DriverData.findDriverByID("DRV300");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D155"); // 5h
+		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D151"); // 4h
+		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D156"); // 10h
 		
-		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D156"); // 5h
-		
-
 		try {
 			DeliveriesManagement.assignDriver(delivery1, senior);
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail();
 		}
 
@@ -204,8 +197,8 @@ public class Test4 extends TestCase {
 	public void testDriverScheduleConflictSecondStartsBeforeFirstEnds() {
 		Driver junior = DriverData.findDriverByID("DRV200");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D153"); 		//08:00 - 11:00
-		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D155");	//10:00 - 15:00
+		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D154"); 		//11:00 - 15:00
+		Delivery deliveryFail = DeliveriesManagement.getDeliveryById("D160");	//13:30 - 17:30
 
 		try {
 			DeliveriesManagement.assignDriver(delivery1, junior);
@@ -256,9 +249,9 @@ public class Test4 extends TestCase {
 	public void testDriverScheduleConflictOneRightAfterOther() {
 		Driver junior = DriverData.findDriverByID("DRV200");
 
-		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D155"); 	//10:00 - 15:00
-		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D156");	//15:00 - 20:00
-
+		Delivery delivery1 = DeliveriesManagement.getDeliveryById("D151"); 	//10:00 - 14:00
+		Delivery delivery2 = DeliveriesManagement.getDeliveryById("D152");	//14:00 - 18:00
+		
 		try {
 			DeliveriesManagement.assignDriver(delivery1, junior);
 			DeliveriesManagement.assignDriver(delivery2, junior);
